@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica Web Components</title>
+    <link rel="stylesheet" href="./styles/global.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Práctica de Web Components</h1>
+
+      <p>
+        Este proyecto implementa una arquitectura basada en Web Components,
+        utilizando Shadow DOM para la encapsulación y lit-html para el
+        renderizado. La comunicación entre componentes se realiza mediante
+        CustomEvent con propagación a través del DOM, permitiendo un diseño
+        desacoplado, reutilizable y escalable.
+      </p>
+
+      <section class="block">
+        <h2>Botones</h2>
+        <div class="demo">
+          <mi-button label="Primario" variant="primary"></mi-button>
+          <mi-button label="Secundario" variant="secondary"></mi-button>
+          <mi-button label="Peligro" variant="danger"></mi-button>
+          <mi-button label="Fantasma" variant="ghost"></mi-button>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2>Casillas de verificación</h2>
+        <div class="checkbox-group">
+          <mi-checkbox
+            item-id="html-css"
+            label="HTML y CSS"
+            checked
+          ></mi-checkbox>
+          <mi-checkbox item-id="javascript" label="JavaScript"></mi-checkbox>
+          <mi-checkbox
+            item-id="web-components"
+            label="Web Components"
+          ></mi-checkbox>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2>Cantidad</h2>
+        <mi-spinner label="Cantidad" value="1" min="1"></mi-spinner>
+      </section>
+
+      <mi-status-panel></mi-status-panel>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

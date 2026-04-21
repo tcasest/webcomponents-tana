@@ -1,0 +1,57 @@
+/* Autor: Tanausú Castrillo Estévez */
+/* Estilos globales para nuestro proyecto */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+h2 {
+  margin: 0 0 16px 0;
+  font-size: 1.15rem;
+}
+
+p {
+  line-height: 1.5;
+}
+
+.block {
+  margin-top: 28px;
+}
+
+.demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.checkbox-group {
+  display: grid;
+  gap: 14px;
+}
+
+mi-status-panel {
+  display: block;
+  margin-top: 32px;
+}

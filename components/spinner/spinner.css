@@ -1,0 +1,42 @@
+:host {
+  display: inline-block;
+}
+.wrapper {
+  display: inline-grid;
+  gap: 8px;
+}
+.label {
+  font-size: 0.95rem;
+  color: #1f2937;
+}
+.box {
+  display: grid;
+  grid-template-columns: 48px 40px 48px;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+  background: #f3f4f6;
+  width: max-content;
+}
+.button {
+  width: 48px;
+  height: 44px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #f3f4f6;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.value {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  min-width: 24px;
+}
