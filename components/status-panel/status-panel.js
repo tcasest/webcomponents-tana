@@ -5,7 +5,10 @@
  * El componente status-panel actúa como coordinador. Escucha eventos globales y modifica otros
  * componentes sin acoplarse directamente a ellos.
  */
-import { html, render } from "https://unpkg.com/lit-html?module";
+import {
+  html,
+  render,
+} from "https://cdn.jsdelivr.net/npm/lit-html@3.1.2/lit-html.js";
 import styles from "./status-panel.css" with { type: "css" };
 import { events } from "../../utils/events.js";
 

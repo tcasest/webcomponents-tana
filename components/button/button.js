@@ -2,14 +2,17 @@
  * Autor: Tanausú Castrillo Estévez
  * Componente de botón mínimo usando Web Components + lit-html.
  */
-import { html, render } from 'https://unpkg.com/lit-html?module';
-import { repeat } from 'https://unpkg.com/lit-html/directives/repeat.js?module';
-import styles from './button.css' with { type: 'css' };
-import { events } from '../../utils/events.js';
+import {
+  html,
+  render,
+} from "https://cdn.jsdelivr.net/npm/lit-html@3.1.2/lit-html.js";
+import { repeat } from "https://cdn.jsdelivr.net/npm/lit-html@3.1.2/directives/repeat.js";
+import styles from "./button.css" with { type: "css" };
+import { events } from "../../utils/events.js";
 
 export class MiButton extends HTMLElement {
   static get observedAttributes() {
-    return ['label', 'variant', 'disabled'];
+    return ["label", "variant", "disabled"];
   }
 
   #shadow;
@@ -17,13 +20,17 @@ export class MiButton extends HTMLElement {
 
   constructor() {
     super();
-    this.#shadow = this.attachShadow({ mode: 'open' });
+    this.#shadow = this.attachShadow({ mode: "open" });
     this.#shadow.adoptedStyleSheets = [styles];
   }
 
   connectedCallback() {
-    this.#disposables.push(events(this.#shadow, 'click', this.#handleClick.bind(this)));
-    this.#disposables.push(events(this, 'keydown', this.#handleKeyDown.bind(this)));
+    this.#disposables.push(
+      events(this.#shadow, "click", this.#handleClick.bind(this)),
+    );
+    this.#disposables.push(
+      events(this, "keydown", this.#handleKeyDown.bind(this)),
+    );
     this.render();
   }
 
@@ -37,35 +44,37 @@ export class MiButton extends HTMLElement {
   }
 
   get label() {
-    return this.getAttribute('label') ?? 'Botón';
+    return this.getAttribute("label") ?? "Botón";
   }
 
   set label(value) {
-    this.setAttribute('label', value);
+    this.setAttribute("label", value);
   }
 
   get variant() {
-    return this.getAttribute('variant') ?? 'primary';
+    return this.getAttribute("variant") ?? "primary";
   }
 
   set variant(value) {
-    this.setAttribute('variant', value);
+    this.setAttribute("variant", value);
   }
 
   get disabled() {
-    return this.hasAttribute('disabled');
+    return this.hasAttribute("disabled");
   }
 
   set disabled(value) {
     if (value) {
-      this.setAttribute('disabled', '');
+      this.setAttribute("disabled", "");
     } else {
-      this.removeAttribute('disabled');
+      this.removeAttribute("disabled");
     }
   }
 
   #handleClick(ev) {
-    const node = ev.composedPath().find((n) => n?.dataset && 'role' in n.dataset);
+    const node = ev
+      .composedPath()
+      .find((n) => n?.dataset && "role" in n.dataset);
     if (!node || this.disabled) return;
     ev.stopPropagation();
     node.dispatchEvent(this.#createEvent());
@@ -73,20 +82,20 @@ export class MiButton extends HTMLElement {
 
   #handleKeyDown(ev) {
     if (this.disabled) return;
-    if (ev.key === 'Enter' || ev.key === ' ') {
+    if (ev.key === "Enter" || ev.key === " ") {
       ev.preventDefault();
       this.dispatchEvent(this.#createEvent());
     }
   }
 
   #createEvent() {
-    return new CustomEvent('button-click', {
+    return new CustomEvent("button-click", {
       bubbles: true,
       composed: true,
       detail: {
         label: this.label,
-        variant: this.variant
-      }
+        variant: this.variant,
+      },
     });
   }
 
@@ -103,10 +112,11 @@ export class MiButton extends HTMLElement {
               data-role="button"
               type="button"
               .disabled=${this.disabled}
-              ?aria-disabled=${this.disabled}>
+              ?aria-disabled=${this.disabled}
+            >
               ${this.label}
             </button>
-          `
+          `,
         )}
       </div>
     `;
@@ -114,5 +124,5 @@ export class MiButton extends HTMLElement {
   }
 }
 
-customElements.define('mi-button', MiButton);
+customElements.define("mi-button", MiButton);
 export default MiButton;
